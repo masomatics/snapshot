@@ -39,17 +39,19 @@ def generate_ar(init_mean, theta, T, sig_sys, sig_obs, N,
 
     Example
     -------
-    >>> init_mean = np.array([1., 2., 3.])
-    >>> theta = np.array([0., 1., 2., 2., 1., 0.])
-    >>> T = 10
-    >>> sig_sys = np.array([1., 1., 1.])
+    >>> import matplotlib.pyplot as plt
+    >>> init_mean = np.array([2., 1., 2.])
+    >>> theta = np.array([0.5 , 2., 1., 0.75, 0.75, 1.]) * 0.1
+    >>> T = 20
+    >>> sig_sys = np.array([2., 1., 1.])
     >>> sig_obs = np.array([1., 1., 1.])
-    >>> N = 1000
-
-    >>> y1 = data_generation.generate_ar(init_mean, theta, T, sig_sys, sig_obs, N)
-    >>> y2 = data_generation.generate_ar(init_mean, theta, T, sig_sys, sig_obs, N)
-    >>> np.allclose(y1, y2)
-    True
+    >>> N = 10000
+    >>> plt.plot()
+    >>> plt.plot(y.mean(axis=1)[:, 0], label='1')
+    >>> plt.plot(y.mean(axis=1)[:, 1], label='2')
+    >>> plt.plot(y.mean(axis=1)[:, 2], label='3')
+    >>> plt.legend()
+    >>> plt.show()
 
     """
     # check parameter size
