@@ -39,7 +39,7 @@ def generate_ar(init_mean, theta, T, sig_sys, sig_obs, N,
 
     Example
     -------
-    >>> import matplotlib.pyplot as plt
+    >>> import matplotlib.pyplot as pltx
     >>> init_mean = np.array([2., 1., 2.])
     >>> theta = np.array([0.5 , 2., 1., 0.75, 0.75, 1.]) * 0.1
     >>> T = 20
@@ -62,9 +62,9 @@ def generate_ar(init_mean, theta, T, sig_sys, sig_obs, N,
 
     # noise generation
     np.random.seed(sys_seed)
-    sys_noise = sig_sys * np.random.randn(T, N, num_species)  # gaussian noise
+    sys_noise = sig_sys * np.random.randn(T, N, num_species)
     np.random.seed(obs_seed)
-    obs_noise = sig_obs * np.random.randn(T, N, num_species)  # gaussian noise
+    obs_noise = sig_obs * np.random.randn(T, N, num_species)
 
     # initialization
     x_now = np.array([init_mean for _ in range(N)], np.float64)
@@ -74,7 +74,7 @@ def generate_ar(init_mean, theta, T, sig_sys, sig_obs, N,
     for t in range(1, T):
         # generate x
         x_now[:, 0] = x_now[:, 0] \
-                      + theta[0] * (x_now[:, 1] ** 2) / (1 + (x_now[:, 0] ** 2)) \
+                      + theta[0] * (x_now[:, 0] ** 2) / (1 + (x_now[:, 0] ** 2)) \
                       - theta[1] * (x_now[:, 2] ** 2)
 
         x_now[:, 1] = x_now[:, 1] \
