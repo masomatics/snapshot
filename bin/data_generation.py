@@ -39,11 +39,24 @@ def generate_ar(init_mean, theta, T, sig_sys, sig_obs, N,
 
     Example
     -------
+    >>> init_mean = np.array([1., 2., 3.])
+    >>> theta = np.array([0., 1., 2., 2., 1., 0.])
+    >>> T = 10
+    >>> sig_sys = np.array([1., 1., 1.])
+    >>> sig_obs = np.array([1., 1., 1.])
+    >>> N = 1000
+
+    >>> y1 = data_generation.generate_ar(init_mean, theta, T, sig_sys, sig_obs, N)
+    >>> y2 = data_generation.generate_ar(init_mean, theta, T, sig_sys, sig_obs, N)
+    >>> np.allclose(y1, y2)
+    True
 
     """
-    # fixed parameters
-    num_parameters = len(theta)
-    num_species = len(init_mean)
+    # check parameter size
+    num_parameters = 6
+    num_species = 3
+    assert(init_mean.shape[0] == num_species)
+    assert(theta.shape[0] == num_parameters)
 
     # noise generation
     np.random.seed(sys_seed)
