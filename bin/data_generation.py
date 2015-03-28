@@ -74,6 +74,6 @@ def generate_ar(init_mean, theta, T, sig_sys, sig_obs, N,
         x_now = np.maximum(x_now, 0)
 
         # generate y
-        y_timeseries[t, :, :] = np.maximum(x_now + sys_noise, 0)
+        y_timeseries[t, :, :] = np.maximum(x_now + obs_noise[t, :, :], 0)
 
     return y_timeseries
