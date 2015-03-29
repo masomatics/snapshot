@@ -27,6 +27,7 @@ def generate_ar(init_mean, theta, T, sig_sys, sig_obs, N,
     obs_seed: int random seed for observation noise
     sig_sys: 1-d ndarray sigma of system noise (diag)
     sig_obs: 1-d ndarray sigma of observation noise (diag)
+    N: notice! num_x = num_y = N (?)
 
     Variables
     ---------
@@ -90,5 +91,6 @@ def generate_ar(init_mean, theta, T, sig_sys, sig_obs, N,
 
         # generate y
         y_timeseries[t, :, :] = np.maximum(x_now + obs_noise[t, :, :], 0)
+
 
     return y_timeseries
